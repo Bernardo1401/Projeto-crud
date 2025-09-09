@@ -1,7 +1,7 @@
-/* Paleta de cores elegante - Dourado, Preto e Cinza */
+
 .container {
   min-height: 100vh;
-  background-image: url('../../public/img/image.png');
+  background-image: url('../../public/img/oct.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -146,7 +146,7 @@
   opacity: 0.8;
 }
 
-/* Responsividade */
+
 @media (max-width: 600px) {
   .container {
     padding: 15px;
