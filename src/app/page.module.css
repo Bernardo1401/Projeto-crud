@@ -111,6 +111,34 @@
   transform: translateY(0) !important;
 }
 
+
+.button01 {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%) !important;
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  padding: 12px 30px !important;
+  height: auto !important;
+  border-radius: 25px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3) !important;
+  margin-top: 15px ;
+}
+
+.button01:hover {
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%) !important;
+  border-color: #1a1a1a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5) !important;
+  color: #1a1a1a !important;
+}
+
+.button01:active {
+  transform: translateY(0) !important;
+}
 .quote {
   font-size: 18px;
   font-style: italic;

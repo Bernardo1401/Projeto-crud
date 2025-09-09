@@ -36,6 +36,16 @@ export default function HomePage() {
                         Ver Lutadores
                     </Button>
                 </Link>
+                <Link href="/apiinfo">
+                    <Button 
+                        type="primary" 
+                        size="large"
+                        icon={<UserOutlined />}
+                        className={styles.button01}
+                    >
+                        Ver Informações da API
+                    </Button>
+                </Link>
 
                 <p className={styles.quote}>Faça mais do que apenas existir</p>
             </div>

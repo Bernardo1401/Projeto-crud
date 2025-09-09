@@ -41,7 +41,7 @@ export default function NotFoundPage() {
             </h2>
           </div>
           
-          <p className="text-xl text-gray-300 leading-relaxed px-4 max-w-md mx-auto">''
+          <p className="text-xl text-gray-300 leading-relaxed px-4 max-w-md mx-auto">
             Ops! Parece que essa página já encerrou sua carreira no octógono 
           </p>
           <div className="w-16 h-0.5 bg-yellow-600 mx-auto my-6 opacity-60"></div>
@@ -76,11 +76,28 @@ export default function NotFoundPage() {
               <Button
                 size="large"
                 icon={<UserOutlined />}
-                className="w-full sm:w-auto px-8 h-12 text-lg font-semibold bg-transparent border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black transition-all duration-300 hover:scale-105"
+                className="w-full sm:w-auto px-8 h-12 text-lg font-semibold transition-all duration-300 hover:scale-105"
                 style={{
+                  background: "linear-gradient(135deg, #1a1a1a 0%, #333333 50%, #000000 100%)",
+                  borderColor: "#D4AF37",
+                  color: "#D4AF37",
                   borderRadius: "25px",
                   textTransform: "uppercase",
                   letterSpacing: "1px",
+                  border: "2px solid #D4AF37",
+                  boxShadow: "0 5px 15px rgba(212, 175, 55, 0.2)",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = "linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #333333 100%)";
+                  e.target.style.color = "#FFD700";
+                  e.target.style.borderColor = "#FFD700";
+                  e.target.style.boxShadow = "0 8px 20px rgba(212, 175, 55, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = "linear-gradient(135deg, #1a1a1a 0%, #333333 50%, #000000 100%)";
+                  e.target.style.color = "#D4AF37";
+                  e.target.style.borderColor = "#D4AF37";
+                  e.target.style.boxShadow = "0 5px 15px rgba(212, 175, 55, 0.2)";
                 }}
               >
                 Lutadores
