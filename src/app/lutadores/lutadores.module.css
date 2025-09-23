@@ -1,0 +1,741 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  padding: 2rem;
+  color: #ffffff;
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.header h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #d4af37;
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #d4af37, #f4d03f, #d4af37);
+  background-size: 200% 200%;
+  animation: goldShimmer 3s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes goldShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header p {
+  font-size: 1.4rem;
+  color: #cccccc;
+  margin: 0;
+  opacity: 0.9;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(212, 175, 55, 0.3);
+  border-top: 4px solid #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  font-size: 1.2rem;
+  color: #d4af37;
+  font-weight: 500;
+}
+
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.errorCard {
+  background: #2a2a2a;
+  border: 2px solid #d32f2f;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.errorIcon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.errorCard h3 {
+  color: #d32f2f;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.errorCard p {
+  color: #cccccc;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.retryButton {
+  background: #d4af37;
+  color: #000000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retryButton:hover {
+  background: #b8941f;
+  transform: translateY(-2px);
+}
+
+.noData {
+  text-align: center;
+  padding: 4rem;
+  color: #cccccc;
+}
+
+.noData h3 {
+  font-size: 1.8rem;
+  color: #d4af37;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.resultsInfo {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  color: #d4af37;
+  font-weight: 500;
+}
+
+.fighterCard {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a) !important;
+  border: 2px solid #333 !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.fighterCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fighterCard:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(212, 175, 55, 0.25);
+  border-color: #d4af37 !important;
+}
+
+.fighterCard:hover::before {
+  opacity: 1;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.button {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%) !important;
+  border: 2px solid #D4AF37 !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  padding: 12px 30px !important;
+  height: auto !important;
+  border-radius: 25px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3) !important;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%) !important;
+  border-color: #FFD700 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5) !important;
+  color: #000000 !important;
+}
+
+.button:focus {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%) !important;
+  border-color: #D4AF37 !important;
+  color: #000000 !important;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3) !important;
+}
+
+.button:active {
+  transform: translateY(0) !important;
+}
+
+.cardImageContainer {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(45deg, #1a1a1a, #333);
+}
+
+.fighterImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.fighterCard:hover .fighterImage {
+  transform: scale(1.08);
+  filter: brightness(1) contrast(1.2);
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom, 
+    rgba(0,0,0,0.1) 0%, 
+    rgba(0,0,0,0.3) 50%,
+    rgba(0,0,0,0.8) 100%
+  );
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1.5rem;
+}
+
+.weightClass {
+  background: linear-gradient(135deg, #d4af37, #f4d03f);
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.cardContent {
+  padding: 1.5rem !important;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.fighterName {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-bottom: 1rem !important;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: 0.5px;
+}
+
+.fightingStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  background: rgba(212, 175, 55, 0.15);
+  border-radius: 10px;
+  color: #d4af37;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  margin-bottom: 1rem;
+}
+
+.styleIcon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.record,
+.recordStats,
+.wins,
+.losses,
+.draws,
+.separator,
+.reach,
+.reachIcon {
+  display: none;
+}
+
+.fighterDetails {
+  display: none;
+}
+
+.detailItem {
+  display: none;
+}
+
+.hallOfFameBadge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  color: #000;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 65px;
+  left: 15px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  animation: pulse 2s infinite 0.5s;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.achievements {
+  display: none;
+}
+
+.achievementsTitle {
+  display: none;
+}
+
+.achievementsText {
+  display: none;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.viewMoreButton {
+  background: linear-gradient(135deg, #d4af37, #f4d03f) !important;
+  border: 2px solid #d4af37 !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  font-size: 0.9rem !important;
+  padding: 8px 20px !important;
+  height: auto !important;
+  border-radius: 20px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3) !important;
+}
+
+.viewMoreButton:hover {
+  background: linear-gradient(135deg, #ffd700, #d4af37) !important;
+  border-color: #ffd700 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.5) !important;
+  color: #000000 !important;
+}
+
+.viewMoreButton:focus {
+  background: linear-gradient(135deg, #d4af37, #f4d03f) !important;
+  border-color: #d4af37 !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3) !important;
+}
+
+.viewMoreButton:active {
+  transform: translateY(0) !important;
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 1200px) {
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 2.8rem;
+  }
+  
+  .header p {
+    font-size: 1.2rem;
+  }
+  
+  .pagination {
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+  
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.2rem;
+    padding: 1rem 0;
+  }
+  
+  .cardImageContainer {
+    height: 220px;
+  }
+
+  .fightingStyle,
+  .reach {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+
+  .fighterName {
+    font-size: 1.2rem !important;
+  }
+  
+  .fightingStyle {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .viewMoreButton {
+    font-size: 0.8rem !important;
+    padding: 6px 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+  }
+  
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .cardContent {
+    padding: 1.2rem !important;
+  }
+  
+  .pagination {
+    padding: 1rem;
+  }
+}
+
+/* Sobrescrever estilos do Ant Design */
+.fighterCard .ant-card-body {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.fighterCard .ant-card-cover {
+  margin: 0 !important;
+}
+
+.paginationTop,
+.paginationBottom {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.paginationTop {
+  margin-bottom: 3rem;
+}
+
+/* Aplicar estilos customizados para paginação */
+.paginationTop :global(.ant-pagination),
+.paginationBottom :global(.ant-pagination) {
+  color: #d4af37;
+}
+
+.paginationTop :global(.ant-pagination .ant-pagination-item),
+.paginationBottom :global(.ant-pagination .ant-pagination-item) {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.paginationTop :global(.ant-pagination .ant-pagination-item a),
+.paginationBottom :global(.ant-pagination .ant-pagination-item a) {
+  color: #d4af37;
+}
+
+.paginationTop :global(.ant-pagination .ant-pagination-item:hover),
+.paginationBottom :global(.ant-pagination .ant-pagination-item:hover) {
+  border-color: #d4af37;
+}
+
+.paginationTop :global(.ant-pagination .ant-pagination-item-active),
+.paginationBottom :global(.ant-pagination .ant-pagination-item-active) {
+  background: #d4af37;
+  border-color: #d4af37;
+}
+
+.paginationTop :global(.ant-pagination .ant-pagination-item-active a),
+.paginationBottom :global(.ant-pagination .ant-pagination-item-active a) {
+  color: #000;
+}
+
+.paginationTop :global(.ant-pagination .ant-pagination-prev),
+.paginationTop :global(.ant-pagination .ant-pagination-next),
+.paginationBottom :global(.ant-pagination .ant-pagination-prev),
+.paginationBottom :global(.ant-pagination .ant-pagination-next) {
+  color: #d4af37;
+}
+
+.paginationTop :global(.ant-pagination .ant-pagination-options),
+.paginationBottom :global(.ant-pagination .ant-pagination-options) {
+  color: #d4af37;
+}
+
+.paginationTop :global(.ant-select:not(.ant-select-customize-input) .ant-select-selector),
+.paginationBottom :global(.ant-select:not(.ant-select-customize-input) .ant-select-selector) {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #d4af37;
+}
+
+.paginationTop :global(.ant-pagination .ant-pagination-total-text),
+.paginationBottom :global(.ant-pagination .ant-pagination-total-text) {
+  color: #d4af37;
+}
+
+.paginationBottom {
+  margin-top: 3rem;
+}
+
+.skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #333;
+  overflow: hidden;
+}
+
+.skeletonShimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(42, 42, 42, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  max-width: 800px;
+}
+
+.pagination :global(.ant-pagination) {
+  color: #d4af37 !important;
+}
+
+.pagination :global(.ant-pagination .ant-pagination-item) {
+  background: #1a1a1a !important;
+  border: 2px solid #333 !important;
+  border-radius: 10px !important;
+  margin: 0 5px !important;
+  transition: all 0.3s ease !important;
+}
+
+.pagination :global(.ant-pagination .ant-pagination-item:hover) {
+  border-color: #d4af37 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3) !important;
+}
+
+.pagination :global(.ant-pagination .ant-pagination-item a) {
+  color: #d4af37 !important;
+  font-weight: 600 !important;
+}
+
+.pagination :global(.ant-pagination .ant-pagination-item-active) {
+  background: linear-gradient(135deg, #d4af37, #f4d03f) !important;
+  border-color: #d4af37 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4) !important;
+}
+
+.pagination :global(.ant-pagination .ant-pagination-item-active a) {
+  color: #000 !important;
+  font-weight: bold !important;
+}
+
+.pagination :global(.ant-pagination .ant-pagination-prev),
+.pagination :global(.ant-pagination .ant-pagination-next) {
+  color: #d4af37 !important;
+  border: 2px solid #333 !important;
+  border-radius: 10px !important;
+  background: #1a1a1a !important;
+  transition: all 0.3s ease !important;
+}
+
+.pagination :global(.ant-pagination .ant-pagination-prev:hover),
+.pagination :global(.ant-pagination .ant-pagination-next:hover) {
+  border-color: #d4af37 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3) !important;
+}
+
+.pagination :global(.ant-select-selector) {
+  background: #1a1a1a !important;
+  border: 2px solid #333 !important;
+  border-radius: 10px !important;
+  color: #d4af37 !important;
+  transition: all 0.3s ease !important;
+}
+
+.pagination :global(.ant-select-selector:hover) {
+  border-color: #d4af37 !important;
+}
+
+.pagination :global(.ant-pagination .ant-pagination-options) {
+  color: #d4af37 !important;
+}
+
+.bloco {
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.bloco h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #d4af37;
+  margin-bottom: 2rem;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #d4af37, #f4d03f, #d4af37);
+  background-size: 200% 200%;
+  animation: goldShimmer 3s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
