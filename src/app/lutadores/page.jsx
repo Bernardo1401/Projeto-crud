@@ -59,7 +59,7 @@ export default function Lutadores() {
     return data.lutadores.slice(start, start + data.pageSize);
   };
 
-  const defaultImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23333'/%3E%3Ctext x='150' y='200' text-anchor='middle' dy='0.35em' font-family='Arial' font-size='60' fill='%23d4af37'%3E🥊%3C/text%3E%3C/svg%3E";
+  const defaultImage = "/img/default.png";
 
   return (
     <div className={styles.container}>
