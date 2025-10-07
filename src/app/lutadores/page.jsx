@@ -6,7 +6,7 @@ import { Pagination, Card } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import Link from "next/link";
 import styles from "./lutadores.module.css";
-import { UserOutlined } from "@ant-design/icons";
+import {HomeOutlined, EditOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 
 const PAGE_SIZE_OPTIONS = ["6", "12", "24"];
@@ -63,6 +63,7 @@ export default function Lutadores() {
 
   return (
     <div className={styles.container}>
+      lin
       <div className={styles.bloco}>
         <h1>Lista de Lutadores</h1>
 
@@ -83,10 +84,20 @@ export default function Lutadores() {
             <Button 
               type="primary" 
               size="large"
-              icon={<UserOutlined />}
+              icon={<HomeOutlined  />}
               className={styles.button}
             >
               Voltar para Home
+            </Button>
+          </Link>
+          <Link href="/lutadores/update">
+            <Button 
+              type="primary" 
+              size="large"  
+              icon={<EditOutlined  />}
+              className={styles.button}
+            >
+              Editar Lutador
             </Button>
           </Link>
         </div>

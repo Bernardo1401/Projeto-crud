@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import {HomeOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./apiinfo.module.css"
@@ -35,7 +35,7 @@ export default function ApiInfo() {
                     <Button 
                         type="primary" 
                         size="small"
-                        icon={<UserOutlined />}
+                        icon={<HomeOutlined />}
                         className={styles.button01}
                     >
                         Voltar para Home

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, ReadOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css"
@@ -40,7 +40,7 @@ export default function HomePage() {
                     <Button 
                         type="primary" 
                         size="large"
-                        icon={<UserOutlined />}
+                        icon={<ReadOutlined  />}
                         className={styles.button01}
                     >
                         Ver Informações da API
